@@ -121,6 +121,45 @@ router.get('/menuItems', function (req, res, next) {
         ]
     });
 });
+router.get('/newModelItems', function (req, res, next) {
+    res.json({
+        newModelItems: [
+            {
+                cost: 145800,
+                image: '../assets/img/moto/timg.jpeg',
+                label: 'Street™750',
+                color: 'black',
+                category: '',
+                categoryId: '',
+                productId: '',
+                afterDiscount: 142000,
+                favourite: true
+            },
+            {
+                cost: 142800,
+                image: '../assets/img/moto/timg-1.jpeg',
+                label: 'Street™ Bob',
+                color: 'white',
+                category: '',
+                categoryId: '',
+                productId: '',
+                afterDiscount: 13900,
+                favourite: true
+            },
+            {
+                cost: 135800,
+                image: '../assets/img/moto/timg-2.jpeg',
+                label: 'Roadster™',
+                color: 'yellow',
+                category: '',
+                categoryId: '',
+                productId: '',
+                afterDiscount: 13200,
+                favourite: true
+            }
+        ]
+    });
+});
 router.post('/login', function (req, res, next) {
     /* if (req.body.userName.length > 0) {
         req.session['userName'] = req.body.userName;
