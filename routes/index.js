@@ -211,13 +211,13 @@ router.get('/', function (req, res, next) {
         title: 'Expressangular'
     });
 });
-router.get('/menuItems', function (req, res, next) {
+router.get('/apiMenuItems', function (req, res, next) {
     res.json(menuItemMock);
 });
-router.get('/newModelItems', function (req, res, next) {
+router.get('/apiNewModelItems', function (req, res, next) {
     res.json(itemListMock);
 });
-router.get('/newModelItems/:itemId', function (req, res, next) {
+router.get('/apiNewModelItems/:itemId', function (req, res, next) {
     res.send(req.params);
 });
 router.post('/login', function (req, res, next) {

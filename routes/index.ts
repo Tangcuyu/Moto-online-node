@@ -216,15 +216,15 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/menuItems', (req, res, next) => {
+router.get('/apiMenuItems', (req, res, next) => {
     res.json(menuItemMock);
 });
 
-router.get('/newModelItems', (req, res, next) => {
+router.get('/apiNewModelItems', (req, res, next) => {
     res.json(itemListMock);
 });
 
-router.get('/newModelItems/:itemId', (req, res, next) => {
+router.get('/apiNewModelItems/:itemId', (req, res, next) => {
     res.send(req.params);
 });
 
