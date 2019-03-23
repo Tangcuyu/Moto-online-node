@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as db  from './model/db';
 const app = express();
 const cors = require('cors');
 
