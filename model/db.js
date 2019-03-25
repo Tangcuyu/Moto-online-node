@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/* 连接MongoDb数据库 */
 var mongoose = require("mongoose");
 var dbUrl = 'mongodb://localhost:27017/MotoOnline';
 mongoose.connect(dbUrl);
+/* 连接事件及控制台输出 */
 mongoose.connection.on('connected', function () {
     console.log('Mongoose connected to:' + dbUrl);
 });
@@ -18,4 +20,5 @@ process.on('SIGINT', function () {
         process.exit(0);
     });
 });
+module.exports = mongoose;
 //# sourceMappingURL=db.js.map

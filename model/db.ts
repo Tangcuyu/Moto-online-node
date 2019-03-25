@@ -1,9 +1,10 @@
+/* 连接MongoDb数据库 */
 import * as mongoose from 'mongoose';
-
 let dbUrl = 'mongodb://localhost:27017/MotoOnline';
-
 mongoose.connect(dbUrl);
 
+
+/* 连接事件及控制台输出 */
 mongoose.connection.on('connected', () => {
     console.log('Mongoose connected to:' + dbUrl);
 });
@@ -22,3 +23,6 @@ process.on('SIGINT', () => {
         process.exit(0);
     });
 });
+
+
+module.exports = mongoose;

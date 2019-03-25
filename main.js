@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var app = express();
+var db = require('./model/db');
 var cors = require('cors');
 var Index = require("./routes/index");
 var path = require("path");
