@@ -1,26 +1,9 @@
 import * as express from 'express';
-
-
-const router = express.Router();
-
-
-router.get('/', );
-
-router.get('/apiMenuItems', );
-
-router.get('/apiNewModelItems', );
-
-router.get('/apiNewModelItems/:itemId', (req, res, next) => {
-    res.send(req.params);
-});
+import MenuCtrl from '../controllers/menu';
 
 export default function setRoutes(app) {
-
-    const router = express.Router();
-
     // Mock JSON data
-    const menuItemMock = {
-        menuItems: [
+    const menuItemMock = [
             { 
                 buttonName: '选购工具',
                 iconString: 'apps',
@@ -37,7 +20,7 @@ export default function setRoutes(app) {
                         subItemName: '电子手册',
                         subItemString: 'content_paste'
                     },
-    
+
                 ]
             },
             { 
@@ -126,11 +109,10 @@ export default function setRoutes(app) {
                         subItemName: 'Signup Page',
                         subItemString: 'person_add'
                     }
-    
+
                 ]
             }
-        ]
-    };
+        ]; 
     const itemListMock = {
         newModelItems: [
             {
@@ -175,7 +157,7 @@ export default function setRoutes(app) {
                 afterDiscount: 132000,
                 favourite: true
             }
-    
+
         ]
     };
     const itemDecMock = {
@@ -222,19 +204,21 @@ export default function setRoutes(app) {
                 afterDiscount: 132000,
                 favourite: true
             }
-    
+
         ]
     }
 
-    // 路由到根目录
+    const router = express.Router();
+    const menuCtrl = new MenuCtrl();
+
+    // 路由到API根目录 目前只是插入MOCK的菜单数据 TODO: 使用管理界面插入菜单数据
     router.route('/').get((req, res, next) => {
-        res.send({title: 'Expressangular'});
+        req.body = menuItemMock;  
+        menuCtrl.insertMany(req, res);
     });
 
     // Menu items
-    router.route('/menuItems').get((req, res, next) => {
-        res.json(menuItemMock);
-    });
+    router.route('/menuItems').get( menuCtrl.getAll );
 
     // New models
     router.route('/newModelItems').get((req, res, next) => {

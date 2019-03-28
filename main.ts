@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'test') {
 mongoose.Promise = global.Promise;
 mongoose.connect(mongodbURI)
   .then(db => {
-    console.log('Connected to MongoDB');
+    console.log('Connected to MongoDB: ' + mongodbURI);
 
     setRoutes(app);
 
@@ -56,6 +56,18 @@ mongoose.connect(mongodbURI)
   })
   .catch(err => console.error(err));
 
-  
+/* 连接事件及控制台输出 */
+
+mongoose.connection.on('disconnected', () => {
+    console.log('Mongoose disconnected');
+});
+
+process.on('SIGINT', () => {
+    mongoose.connection.close( () => {
+        console.log('Mongoose disconnected through app termination');
+        process.exit(0);
+    });
+});
+
 export { app };
 
