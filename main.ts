@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 mongoose.Promise = global.Promise;
-mongoose.connect(mongodbURI)
+mongoose.connect(mongodbURI, { useNewUrlParser: true })
   .then(db => {
     console.log('Connected to MongoDB: ' + mongodbURI);
 

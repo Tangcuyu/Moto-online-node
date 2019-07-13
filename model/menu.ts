@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 /* Submenu SCHEMA */
-let SubmenuSchema = new mongoose.Schema({
+let submenuSchema = new mongoose.Schema({
     subItemName: String,
     subItemString: String
 });
@@ -10,7 +10,7 @@ let SubmenuSchema = new mongoose.Schema({
 let menuSchema = new mongoose.Schema({
     buttonName: String,
     iconString: String,
-    subItems: [SubmenuSchema]
+    subItems: [submenuSchema]   //Subdocuments
 });
 
 /**
